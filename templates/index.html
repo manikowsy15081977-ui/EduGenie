@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGenie - AI Learning Assistant</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div>
+            <h1>🎓 EduGenie</h1>
+            <p>AI Learning Assistant</p>
+        </div>
+
+        <span class="status">● Online</span>
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Welcome Section -->
+        <section class="hero">
+            <h2>Welcome to EduGenie 👋</h2>
+
+            <p>
+                Learn smarter, understand better and test your knowledge
+                with your AI-powered learning assistant.
+            </p>
+
+            <input
+                type="text"
+                id="topic"
+                placeholder="Enter your subject or topic..."
+            >
+
+            <button onclick="startLearning()">
+                🚀 Start Learning
+            </button>
+        </section>
+
+
+        <!-- Feature Cards -->
+        <section class="features">
+
+            <div class="card">
+                <div class="icon">📚</div>
+                <h3>Explanation</h3>
+
+                <p>
+                    Understand difficult topics in a simple way.
+                </p>
+
+                <button onclick="showFeature('explanation')">
+                    Explain Topic
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">📝</div>
+                <h3>Quiz</h3>
+
+                <p>
+                    Test your knowledge with interactive questions.
+                </p>
+
+                <button onclick="showFeature('quiz')">
+                    Start Quiz
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">📖</div>
+                <h3>Summary</h3>
+
+                <p>
+                    Get a quick and easy summary of your lesson.
+                </p>
+
+                <button onclick="showFeature('summary')">
+                    Generate Summary
+                </button>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">🧭</div>
+                <h3>Learning Path</h3>
+
+                <p>
+                    Follow a step-by-step learning path.
+                </p>
+
+                <button onclick="showFeature('path')">
+                    View Learning Path
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- Result Section -->
+        <section id="result" class="result">
+
+            <h2>💡 Your Learning Area</h2>
+
+            <p id="resultText">
+                Enter a topic above or choose one of the learning features.
+            </p>
+
+        </section>
+
+
+        <!-- Quick Learning -->
+        <section class="quick">
+
+            <h2>✨ Quick Learning</h2>
+
+            <div class="quick-buttons">
+
+                <button onclick="quickTopic('Java')">
+                    ☕ Java
+                </button>
+
+                <button onclick="quickTopic('Python')">
+                    🐍 Python
+                </button>
+
+                <button onclick="quickTopic('Database')">
+                    🗄️ Database
+                </button>
+
+                <button onclick="quickTopic('Artificial Intelligence')">
+                    🤖 AI
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 EduGenie | AI Learning Assistant
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function startLearning() {
+
+            let topic = document.getElementById("topic").value;
+
+            if (topic.trim() === "") {
+
+                document.getElementById("resultText").innerHTML =
+                    "⚠️ Please enter a topic first.";
+
+                return;
+            }
+
+            document.getElementById("resultText").innerHTML =
+                "<strong>📚 Learning Topic:</strong> " +
+                topic +
+                "<br><br>" +
+                "EduGenie is preparing learning content for <b>" +
+                topic +
+                "</b>.";
+
+        }
+
+
+        function showFeature(feature) {
+
+            let text = "";
+
+            if (feature === "explanation") {
+
+                text =
+                    "<h3>📚 Topic Explanation</h3>" +
+                    "<p>Enter a topic above to get a simple explanation.</p>";
+
+            }
+
+            else if (feature === "quiz") {
+
+                text =
+                    "<h3>📝 Quiz</h3>" +
+                    "<p>Quiz mode selected! Choose a topic to start testing your knowledge.</p>";
+
+            }
+
+            else if (feature === "summary") {
+
+                text =
+                    "<h3>📖 Summary</h3>" +
+                    "<p>Enter your topic and EduGenie can provide a simple study summary.</p>";
+
+            }
+
+            else if (feature === "path") {
+
+                text =
+                    "<h3>🧭 Learning Path</h3>" +
+                    "<p>1️⃣ Learn Basics → 2️⃣ Practice → 3️⃣ Take Quiz → 4️⃣ Review</p>";
+
+            }
+
+            document.getElementById("resultText").innerHTML = text;
+
+            window.scrollTo({
+                top: document.getElementById("result").offsetTop,
+                behavior: "smooth"
+            });
+        }
+
+
+        function quickTopic(topic) {
+
+            document.getElementById("topic").value = topic;
+
+            document.getElementById("resultText").innerHTML =
+                "🎯 Selected topic: <b>" +
+                topic +
+                "</b><br><br>" +
+                "Click <b>Start Learning</b> to continue.";
+
+        }
+
+    </script>
+
+</body>
+</html>
